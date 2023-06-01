@@ -1,0 +1,11 @@
+import { of, from } from 'rxjs';
+
+const array = [1, 2, 3, 4, 5];
+
+of(...array).subscribe(val => {
+  console.log(val);
+})
+
+from(array).subscribe(val => {
+  console.log(val);
+})

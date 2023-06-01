@@ -1,0 +1,7 @@
+import { defer, interval, of } from 'rxjs';
+
+const lazyObservable = defer(() => Math.random() > 0.5) ? of(1, 2, 3, 4, 5) : interval(1000);
+
+lazyObservable.subscribe(val => {
+  console.log(val);
+})
