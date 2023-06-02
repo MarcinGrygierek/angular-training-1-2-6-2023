@@ -1,0 +1,8 @@
+<p>behavior-subject-test works!</p>
+<button (click)="generateNewValue()">Generate</button>
+
+<ul>
+    <li *ngFor="let value of filteredValues | async">
+        {{ value }}
+    </li>
+</ul>

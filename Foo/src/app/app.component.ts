@@ -7,16 +7,22 @@ import { map, filter, from, scan, interval, timer, take, takeUntil, tap, startWi
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  isVisible: boolean = true;
   ngOnInit(): void {
      
-    interval(500)
-    .pipe(
-      tap(val => {
-        if(val === 2) console.log('Found it!');
-      }),
-      takeUntil(timer(2000))
-    )
-    .subscribe((val) => console.log('Timer 1', val))
+    // interval(500)
+    // .pipe(
+    //   tap(val => {
+    //     if(val === 2) console.log('Found it!');
+    //   }),
+    //   takeUntil(timer(2000))
+    // )
+    // .subscribe((val) => console.log('Timer 1', val))
 
 }
+
+  toggleVisible() {
+    this.isVisible = !this.isVisible;
+  }
 }
