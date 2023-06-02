@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { Component } from '@angular/core';
 import { Pokemon } from '../interfaces';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
@@ -9,15 +8,15 @@ import { Observable } from 'rxjs';
   templateUrl: './pokemon-container.component.html',
   styleUrls: ['./pokemon-container.component.scss']
 })
-export class PokemonContainerComponent implements OnInit {
+export class PokemonContainerComponent {
   pokemon!: Observable<Pokemon | null>;
-  
+
   constructor(private data: DataService) {
     this.pokemon = this.data.pokemon$;
   }
 
-  ngOnInit(): void {
-      this.data.getData(132);
+  getData(id: number): void {
+      this.data.getData(id);
   }
 
 }

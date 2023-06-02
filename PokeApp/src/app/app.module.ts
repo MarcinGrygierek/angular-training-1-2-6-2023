@@ -7,6 +7,7 @@ import { DataWrapperComponent } from './data-wrapper/data-wrapper.component';
 import { BasicDataComponent } from './basic-data/basic-data.component';
 import { ExpandedDataComponent } from './expanded-data/expanded-data.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PokemonHistoryComponent } from './pokemon-history/pokemon-history.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     PokemonContainerComponent,
     DataWrapperComponent,
     BasicDataComponent,
-    ExpandedDataComponent
+    ExpandedDataComponent,
+    PokemonHistoryComponent
   ],
   imports: [
     BrowserModule,

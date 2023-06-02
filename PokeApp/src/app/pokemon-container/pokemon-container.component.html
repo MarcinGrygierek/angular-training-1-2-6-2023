@@ -2,3 +2,9 @@
     <h1>{{(pokemon | async)?.name}}</h1>
     <app-data-wrapper></app-data-wrapper>
 </ng-container>
+
+<button (click)="getData(1)">Pobierz ID 1</button>
+<button (click)="getData(132)">Pobierz ID 132</button>
+<button (click)="getData(39)">Pobierz ID 39</button>
+
+<app-pokemon-history></app-pokemon-history>
