@@ -1,7 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { mergeMap, catchError, of } from 'rxjs';
+import { switchMap, debounceTime, distinctUntilChanged, Observable } from 'rxjs';
+import { MoviesService } from '../movies.service';
+
+export interface Show {
+  show: {
+    name: string;
+  }
+}
 
 @Component({
   selector: 'app-form-test',
@@ -10,24 +16,20 @@ import { mergeMap, catchError, of } from 'rxjs';
 })
 export class FormTestComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  results!: Observable<Show[]>;
+
+  constructor(private fb: FormBuilder, private moviesService: MoviesService) { }
 
   form = this.fb.group({
     search: ['']
   })
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(newValues => {
-      console.log(newValues);
-    })
-
-    this.form.get('search')?.valueChanges.pipe(
-      mergeMap(query => this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
-        catchError(() => of(null))
-      ))
-    ).subscribe(pokemon => {
-      console.log(pokemon);
-    })
+   this.results = this.form.controls.search.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(query => this.moviesService.getMovies(query || ''))
+    )
   }
 
 }
