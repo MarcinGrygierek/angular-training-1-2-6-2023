@@ -18,6 +18,8 @@ import { MulticastTestComponent } from './multicast-test/multicast-test.componen
 import { HttpTestComponent } from './http-test/http-test.component';
 import { FormTestComponent } from './form-test/form-test.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailsComponent } from './details/details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AsyncSubjectTestComponent,
     MulticastTestComponent,
     HttpTestComponent,
-    FormTestComponent
+    FormTestComponent,
+    DetailsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

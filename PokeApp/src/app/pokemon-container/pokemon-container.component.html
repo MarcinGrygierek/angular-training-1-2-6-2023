@@ -1,0 +1,4 @@
+<ng-container *ngIf="pokemon | async">
+    <h1>{{(pokemon | async)?.name}}</h1>
+    <app-data-wrapper></app-data-wrapper>
+</ng-container>
